@@ -32,6 +32,16 @@ const routes = [
         path: '/home/usermanagement',
         name: 'UserManagement',
         component: () => import('../components/User/UserManagement.vue'),
+      },
+      {
+        path: '/home/userrights',
+        name: 'UserRights',
+        component: () => import('../components/Power/Rights.vue'),
+      },
+      {
+        path: '/home/userroles',
+        name: 'UserRoles',
+        component: () => import('../components/Power/Roles.vue'),
       }
     ]   
   },

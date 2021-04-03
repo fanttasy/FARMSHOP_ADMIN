@@ -75,7 +75,7 @@ export default {
               {
                   "id": 113,
                   "authName": "角色列表",
-                  "path": "roles",
+                  "path": "/home/userroles",
                   "icon": 'el-icon-s-opportunity',
                   "children": [],
                   "order": 1
@@ -83,7 +83,7 @@ export default {
               {
                   "id": 123,
                   "authName": "权限列表",
-                  "path": "rights",
+                  "path": "/home/userrights",
                   "icon": 'el-icon-s-opportunity',
                   "children": [],
                   "order": 2

@@ -32,7 +32,10 @@ import {
   Divider,
   Progress,
   Image,
-  Backtop
+  Backtop,
+  Tag,
+  MessageBox,
+  Tree
 
 } from 'element-ui'
 
@@ -68,5 +71,8 @@ Vue.use(Divider)
 Vue.use(Progress)
 Vue.use(Image)
 Vue.use(Backtop)
+Vue.use(Tag)
+Vue.use(Tree)
 
 Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
