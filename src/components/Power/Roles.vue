@@ -41,11 +41,11 @@
           <el-table-column label="角色名称" align="center" prop="roleName"></el-table-column>
           <el-table-column label="角色描述" align="center" prop="roleDesc"></el-table-column>
           <el-table-column label="操作" align="center">
-            <template slot-scope="scope">
+            <!-- <template slot-scope="scope"> -->
               <el-button icon="el-icon-edit" size="mini">编辑</el-button>
               <el-button type="danger" icon="el-icon-delete" size="mini">删除</el-button>
               <el-button type="warning" icon="el-icon-setting" size="mini" @click="setRightDialog">分配权限</el-button>
-            </template>
+            <!-- </template> -->
           </el-table-column>
         </el-table>
         <!-- 分配权限Dialog -->

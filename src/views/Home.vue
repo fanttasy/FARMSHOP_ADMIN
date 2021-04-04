@@ -14,7 +14,7 @@
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command = "logout">退出</el-dropdown-item>
-              <el-dropdown-item command = "test">测试</el-dropdown-item>
+              <el-dropdown-item command = "toGithub">仓库</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -58,6 +58,8 @@ export default {
       if(command === 'logout') {
         window.sessionStorage.setItem('activePath', null)
         this.$router.push('/login')
+      } else if(command === 'toGithub') {
+        window.open("https://github.com/fanttasy/FARMSHOP_ADMIN")
       } else {
         this.$message({message: 'Unknown Command', type: 'error', center: true})
       }

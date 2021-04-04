@@ -1,7 +1,7 @@
 <!-- sideMenu -->
 <template>
   <el-menu
-    :default-active="activePath"
+    :default-active="this.$store.state.activePath"
     class="el-menu-vertical-demo"
     background-color="#324157"
     text-color="#fff"
@@ -100,15 +100,15 @@ export default {
               {
                   "id": 114,
                   "authName": "商品列表",
-                  "path": "goods",
+                  "path": "/home/goodslist",
                   "icon": 'el-icon-s-goods',
                   "children": [],
                   "order": 1
               },
               {
                   "id": 124,
-                  "authName": "分类参数",
-                  "path": "params",
+                  "authName": "添加商品",
+                  "path": "/home/addgoods",
                   "icon": 'el-icon-s-goods',
                   "children": [],
                   "order": 2
@@ -116,7 +116,7 @@ export default {
               {
                   "id": 125,
                   "authName": "商品分类",
-                  "path": "categories",
+                  "path": "/home/category",
                   "icon": 'el-icon-s-goods',
                   "children": [],
                   "order": 3
@@ -133,7 +133,7 @@ export default {
               {
                   "id": 115,
                   "authName": "订单列表",
-                  "path": "orders",
+                  "path": "/home/orderlist",
                   "icon": 'el-icon-s-order',
                   "children": [],
                   "order": 1
@@ -150,7 +150,7 @@ export default {
               {
                   "id": 116,
                   "authName": "数据报表",
-                  "path": "reports",
+                  "path": "/home/report",
                   "icon": 'el-icon-s-data',
                   "children": [],
                   "order": 1
@@ -159,11 +159,10 @@ export default {
           "order": 6
         }
       ],
-      activePath: ''
     };
   },
   created() {
-    this.activePath = window.sessionStorage.getItem('activePath')
+    this.$store.commit('saveMenuStatusVuex', window.sessionStorage.getItem('activePath'))
   },
 
   components: {},
@@ -175,7 +174,7 @@ export default {
   methods: {
     saveMenuStatus(activePath) {
       window.sessionStorage.setItem('activePath', activePath)
-      this.activePath = activePath
+      this.$store.commit('saveMenuStatusVuex', activePath)
     }
   },
   props: {
