@@ -7,10 +7,10 @@
           后台管理系统
         </div>
         <div class="home-icon">
-          <el-avatar src="https://img0.baidu.com/it/u=2626330186,528047753&fm=26&fmt=auto&gp=0.jpg"></el-avatar>
+          <el-avatar :src="userIcon"></el-avatar>
           <el-dropdown @command = "logout">
             <span class="el-dropdown-link">
-              admin<i class="el-icon-caret-bottom el-icon--right"></i>
+              {{adminInfo.username}}<i class="el-icon-caret-bottom el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command = "logout">退出</el-dropdown-item>
@@ -38,15 +38,22 @@
 </template>
 
 <script>
+import {getAdminInfo} from '../network/api/api'
 import SideMenu from '../components/public/SideMenu'
 export default {
   data () {
     return {
-      collapse: false
+      collapse: false,
+      userIcon: require('../assets/img/mayisa.png'),
+      adminInfo: {}
     };
   },
 
   components: {SideMenu},
+
+  created() {
+    this.getAdmin() 
+  },
 
   computed: {},
 
@@ -57,6 +64,7 @@ export default {
     logout(command) {
       if(command === 'logout') {
         window.sessionStorage.setItem('activePath', null)
+        window.sessionStorage.setItem('token', null)
         this.$router.push('/login')
       } else if(command === 'toGithub') {
         window.open("https://github.com/fanttasy/FARMSHOP_ADMIN")
@@ -66,6 +74,12 @@ export default {
     },
     sidebarToggle() {
       this.collapse = !this.collapse;
+    },
+    async getAdmin() {
+      const {data: res} = await getAdminInfo();
+      if(res.result === 'success') {
+        this.adminInfo = res.data[0]
+      }
     }
   }
 }
@@ -88,6 +102,7 @@ export default {
     display: flex;
     align-items: center;
     font-size: 22px;
+    user-select: none;
   }
   .el-header .home-icon {
     flex: auto;

@@ -5,15 +5,15 @@
     <el-card class="box-card" shadow="hover">
       <div class="admin-info">
         <div class="admin-avator">
-          <el-avatar :size="120" fit="fill"  src="https://img0.baidu.com/it/u=2626330186,528047753&fm=26&fmt=auto&gp=0.jpg"></el-avatar>
+          <el-avatar :size="120" fit="fill"  :src="userIcon"></el-avatar>
         </div>
         <div class="admin-name">
-          <div class="admin-name-one">admin</div>
+          <div class="admin-name-one">{{adminInfo.username}}</div>
           <p class="admin-name-two">超级管理员</p>
         </div>
       </div>
       <el-divider></el-divider>
-      <div class="admin-date">注册时间：2020-5-20</div>
+      <div class="admin-date">注册时间：{{adminInfo.createTime | formatDate('-')}}</div>
       <div class="admin-address">登录地点：重庆</div>
     </el-card>
     <!-- 语言详情 -->
@@ -39,7 +39,11 @@
 export default {
   data () {
     return {
+      userIcon: require('../../assets/img/mayisa.png')
     };
+  },
+  props: {
+    adminInfo: Object
   },
 
   components: {},

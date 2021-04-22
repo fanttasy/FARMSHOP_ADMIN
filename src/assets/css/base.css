@@ -52,3 +52,6 @@ html, body, #app {
 .el-table {
 	margin: 10px 0px;
 }
+.quill-editor {
+	min-height: 300px;
+}

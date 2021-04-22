@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import {getLogin} from '../network/api/api'
+import {loginAmin} from '../network/api/api'
 import md5 from 'js-md5'
 export default {
   data () {
@@ -51,13 +51,21 @@ export default {
 
   methods: {
     submitLoginForm(formName) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(async (valid) => {
         if(valid) {
-          window.sessionStorage.setItem('activePath', '/home/mainpage')
-          this.$message({message: '登录成功', type: 'success', center: true})
-          this.$router.push('/home')
+          const params = 'ajax='+encodeURIComponent(JSON.stringify(this.loginForm))
+          const {data: res} = await loginAmin(params)
+          if(res.result === 'success') {
+            window.sessionStorage.setItem('token', res.jwt)
+            window.sessionStorage.setItem('activePath', '/home/mainpage')
+            this.$message({message: res.msg, type: 'success', center: true})
+            this.$router.replace('/home')
+          } else if(res.result === 'failed') {
+            return this.$message({message: res.msg, type: 'error', center: true})
+          } else {
+            return this.$message({message: '未知错误，请重新登录！', type: 'error', center: true})
+          }
         } else {
-          this.$message({message: '登录失败', type: 'error', center: true})
           return false;
         }
       })

@@ -43,7 +43,9 @@ import {
   Cascader,
   CheckboxGroup,
   Checkbox,
-  Upload
+  Upload,
+  Switch,
+  Tooltip
 
 } from 'element-ui'
 
@@ -89,6 +91,8 @@ Vue.use(Cascader)
 Vue.use(CheckboxGroup)
 Vue.use(Checkbox)
 Vue.use(Upload)
+Vue.use(Switch)
+Vue.use(Tooltip)
 
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
