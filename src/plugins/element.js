@@ -32,7 +32,20 @@ import {
   Divider,
   Progress,
   Image,
-  Backtop
+  Backtop,
+  Tag,
+  MessageBox,
+  Tree,
+  Steps,
+  Step,
+  Tabs,
+  TabPane,
+  Cascader,
+  CheckboxGroup,
+  Checkbox,
+  Upload,
+  Switch,
+  Tooltip
 
 } from 'element-ui'
 
@@ -68,5 +81,18 @@ Vue.use(Divider)
 Vue.use(Progress)
 Vue.use(Image)
 Vue.use(Backtop)
+Vue.use(Tag)
+Vue.use(Tree)
+Vue.use(Steps)
+Vue.use(Step)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Cascader)
+Vue.use(CheckboxGroup)
+Vue.use(Checkbox)
+Vue.use(Upload)
+Vue.use(Switch)
+Vue.use(Tooltip)
 
 Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
